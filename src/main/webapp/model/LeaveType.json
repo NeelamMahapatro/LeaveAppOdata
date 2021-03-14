@@ -1,0 +1,24 @@
+{
+    "LeaveCollection":[
+        {
+            "leaveId" : 1,
+            "leaveType": "Illness Leave"
+        },
+        {
+            "leaveId" : 2,
+            "leaveType": "Family Care Leave"
+        },
+        {
+            "leaveId" : 3,
+            "leaveType": "Hospitalization Leave"
+        },
+        {
+            "leaveId" : 4,
+            "leaveType": "Floating Leave"
+        },
+        {
+            "leaveId" : 5,
+            "leaveType": "Privilege Leave"
+        }
+        ]
+    }

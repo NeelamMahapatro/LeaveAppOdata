@@ -1,18 +1,19 @@
 {
-	"_version": "1.1.0",
+	"_version": "1.12.0",
 	"sap.app": {
 		"_version": "1.1.0",
-		"id": "com.leave.model",
+		"id": "com.leavemodel.odata",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"applicationVersion": {
 			"version": "1.0.0"
 		},
+		
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
 		"sourceTemplate": {
-			"id": "ui5template.basicSAPUI5ApplicationProject",
-			"version": "1.32.0"
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
 		},
 		"dataSources": {
 			"odata": {
@@ -24,7 +25,6 @@
 			}
 		}
 	},
-
 	"sap.ui": {
 		"_version": "1.1.0",
 		"technology": "UI5",
@@ -49,12 +49,14 @@
 
 	"sap.ui5": {
 		"_version": "1.1.0",
+		"flexEnabled": false,
 		"rootView": {
-			"viewName": "com.leave.model.view.App",
-			"type": "XML"
+			"viewName": "com.leavemodel.odata.view.Main",
+			"type": "XML",
+			"async": true
 		},
 		"dependencies": {
-			"minUI5Version": "1.30.0",
+			"minUI5Version": "1.65.6",
 			"libs": {
 				"sap.ui.core": {},
 				"sap.m": {},
@@ -69,25 +71,51 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "com.leave.model.i18n.i18n"
+					"bundleName": "com.leavemodel.odata.i18n.i18n"
+				}
+			},
+			"leaveEmployeeM": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/LeaveEmployee.json",
+				"settings": {
+					"defaultBindingMode": "TwoWay"
+				}
+			},
+			"leaveTypeM": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/LeaveType.json",
+				"settings": {
+					"defaultBindingMode": "TwoWay"
+				}
+			},
+			"EmployeeM": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/Employee.json",
+				"settings": {
+					"defaultBindingMode": "TwoWay"
 				}
 			},
 			"": {
-				"dataSource": "odata",
+				"type": "sap.ui.model.odata.v2.ODataModel",
 				"settings": {
+					"defaultOperationMode": "Server",
 					"defaultBindingMode": "TwoWay",
-					"json": true
-				}
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "odata",
+				"preload": true
 			}
 		},
 		"routing": {
 			"config": {
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
-				"viewPath": "com.leave.model.view",
+				"viewPath": "com.leavemodel.odata.view",
 				"controlId": "app",
 				"controlAggregation": "pages",
-				"transition": "slide"
+				"transition": "slide",
+				"async": true,
+				"clearControlAggregation": false
 			},
 			"routes": [
 				{
@@ -99,6 +127,34 @@
 					"pattern": "AddMember",
 					"name": "AddMember",
 					"target": "addMember"
+				},
+				{
+					"name": "requestDetail",
+					"pattern": "requestDetail/{leaveId}",
+					"target": [
+						"requestDetail"
+					]
+				},
+				{
+					"name": "EditLeaveDetail",
+					"pattern": "EditLeaveDetail/{leaveId}",
+					"target": [
+						"EditLeaveDetail"
+					]
+				},
+				{
+					"name": "CreateLeaveRequest",
+					"pattern": "CreateLeaveRequest",
+					"target": [
+						"CreateLeaveRequest"
+					]
+				},
+				{
+					"name": "AllRequestDetail",
+					"pattern": "AllRequestDetail",
+					"target": [
+						"AllRequestDetail"
+					]
 				}
 			],
 			"targets": {
@@ -109,6 +165,29 @@
 				"addMember": {
 					"viewName": "AddMember",
 					"viewLevel": 0
+				},
+				"requestDetail": {
+					"viewType": "XML",
+					"viewName": "requestDetail",
+					"viewId": "requestDetail",
+					"viewLabel": 2,
+					"transition": "flip"
+				},
+				"EditLeaveDetail": {
+					"viewType": "XML",
+					"viewId": "EditLeaveDetail",
+					"viewName": "EditLeaveDetail",
+					"viewLabel": 3
+				},
+				"CreateLeaveRequest": {
+					"viewType": "XML",
+					"viewId": "CreateLeaveRequest",
+					"viewName": "CreateLeaveRequest",
+					"viewLabel": 1
+				},
+				"AllRequestDetail": {
+					"viewType": "XML",
+					"viewName": "AllRequestDetail"
 				}
 			}
 		},

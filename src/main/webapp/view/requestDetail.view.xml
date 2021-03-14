@@ -1,0 +1,72 @@
+<mvc:View xmlns:core="sap.ui.core" 
+xmlns:mvc="sap.ui.core.mvc" 
+xmlns="sap.m" 
+xmlns:l="sap.ui.layout"
+xmlns:f="sap.ui.layout.form"
+xmlns:html="http://www.w3.org/1999/xhtml" 
+xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" 
+controllerName="com.leavemodel.odata.controller.requestDetail">
+	<App>
+		<pages>
+			<Page title="Show Request Details">
+				<content>
+					<VBox class="sapUiSmallMargin">
+						<f:SimpleForm id="leaveFormId"
+							editable="false"
+							layout="ResponsiveGridLayout"
+							title="Leave Details"
+							labelSpanXL="3"
+							labelSpanL="3"
+							labelSpanM="3"
+							labelSpanS="12"
+							adjustLabelSpan="false"
+							emptySpanXL="4"
+							emptySpanL="4"
+							emptySpanM="4"
+							emptySpanS="0"
+							columnsXL="1"
+							columnsL="1"
+							columnsM="1"
+							singleContainerFullSize="false" >
+							<f:toolbar>
+								<Toolbar id="TB1">
+									<Title id="Title1" text="Request Details"/>
+								</Toolbar>
+							</f:toolbar>
+							<f:content>
+								<Toolbar ariaLabelledBy="Title2">
+									<Title id="Title2" text="Details"/>
+								</Toolbar>
+								<Label text="Leave Type" />
+								<Text id="leaveTypeText" text="{TLeaveTypeDetails/LeaveDesc}" />
+								<Label text="Status" />
+								<Text id="statusText" text="{= ${status} &gt; 0 ? 'Approvedl': 'Sent'}" />
+								<Label text="Start Date" />
+								<Text id="startDateText" text="{StartDate}"/>
+								<Label text="End Date" />
+								<Text id="endDateText" text="{EndDate}"/>
+								<Label text="Approver Name" />
+								<Text id="approverText" text="{ApproverName}"/>
+								<Label text="Quota Used" />
+								<Text id="quotaUsedText" text="{QuotaUsed}"/>
+								<Label text="Note" />
+								<Text id="noteText" text="{Note}"/>
+							</f:content>
+						</f:SimpleForm>	
+					</VBox>
+				</content>
+				<footer>
+					<OverflowToolbar id="otbFooter">
+						<ToolbarSpacer/>
+						<Button text="{i18n>layoutEditButton}" type="Emphasized" press="editRequest" action:leaveid="{Id}">
+							<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+						</Button>
+						<Button id="deleteButtonId" text="{i18n>layoutDeleteButton}" type="Reject" press="deleteRequest">
+							<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+						</Button>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

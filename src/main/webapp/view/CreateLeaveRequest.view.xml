@@ -1,0 +1,114 @@
+<mvc:View xmlns:core="sap.ui.core" 
+xmlns:mvc="sap.ui.core.mvc"
+xmlns="sap.m"
+xmlns:f="sap.ui.layout.form"
+xmlns:l="sap.ui.layout"
+	controllerName="com.leavemodel.odata.controller.CreateLeaveRequest" 
+    xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="Create Request">
+				<content>
+					<VBox class="sapUiSmallMargin">
+						<f:SimpleForm id="leaveTypeCreateForm"
+							editable="true"
+							layout="ResponsiveGridLayout"
+							title="Leave Type"
+							labelSpanXL="3"
+							labelSpanL="3"
+							labelSpanM="3"
+							labelSpanS="12"
+							adjustLabelSpan="false"
+							emptySpanXL="4"
+							emptySpanL="4"
+							emptySpanM="4"
+							emptySpanS="0"
+							columnsXL="1"
+							columnsL="1"
+							columnsM="1"
+							singleContainerFullSize="false" >
+							<f:content>
+								<Label text="Leave Type" />
+									<ComboBox width="100%" id="leaveListCombo" showSecondaryValues="true" items="{             path: '/TLeaveTypes'}">
+										<core:ListItem key="{Id}" text="{LeaveDesc}" additionalText=" - {LeaveType}"/>
+									</ComboBox>	
+									<Label text=" "/>
+										<RadioButtonGroup class="sapUiMediumMarginBottom" id="moreThanOne" columns="2" select=".moreSelect">
+							<RadioButton id="M" text="More Than One Day" />
+							<RadioButton id="O" text="One Day or Less" />
+						</RadioButtonGroup>							
+							</f:content>
+						</f:SimpleForm>					
+																			
+					
+						<f:SimpleForm id="leaveCreateFormMore"
+							editable="true"
+							layout="ResponsiveGridLayout"
+							title="Details"
+							labelSpanXL="3"
+							labelSpanL="3"
+							labelSpanM="3"
+							labelSpanS="12"
+							adjustLabelSpan="false"
+							emptySpanXL="4"
+							emptySpanL="4"
+							emptySpanM="4"
+							emptySpanS="0"
+							columnsXL="1"
+							columnsL="1"
+							columnsM="1"
+							singleContainerFullSize="false" >
+							<f:content>
+								<Label text="Start Date" />
+								<DatePicker value="" id="startDateInputM"/>
+								<Label text="End Date" />
+								<DatePicker value=""  id= "endDateInputM"/>
+								<Label text="Approver Name" />
+								<Input value ="Nirmala Shetter"  editable = "false" id ="approverInputM"/>
+								<Label text="Note" />
+								<TextArea width="100%" value="" id = "noteInputM"/>								
+							</f:content>
+						</f:SimpleForm>
+						<f:SimpleForm id="leaveCreateFormLess"
+							editable="true"
+							layout="ResponsiveGridLayout"
+							title="Details"
+							labelSpanXL="3"
+							labelSpanL="3"
+							labelSpanM="3"
+							labelSpanS="12"
+							adjustLabelSpan="false"
+							emptySpanXL="4"
+							emptySpanL="4"
+							emptySpanM="4"
+							emptySpanS="0"
+							columnsXL="1"
+							columnsL="1"
+							columnsM="1"
+							singleContainerFullSize="false" >
+							<f:content>
+								<Label text="Date" />
+								<DatePicker id="dateInputL"/>
+								<Label text="Approver Name" />
+								<Input value ="Nirmala Shetter"  editable = "false" id ="approverInputL"/>
+								<Label text="Note" />
+								<TextArea width="100%" id = "noteInputL"/>								
+							</f:content>
+						</f:SimpleForm>
+					</VBox>
+				</content>
+				<footer>
+					<OverflowToolbar id="otbFooter">
+						<ToolbarSpacer/>
+						<Button text="{i18n&gt;layoutSaveButton}" type="Emphasized" press="saveRequest">
+							<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+						</Button>
+						<Button text="{i18n&gt;layoutCancelButton}" type="Default" press="onNavBack">
+							<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+						</Button>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

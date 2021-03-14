@@ -1,0 +1,62 @@
+<mvc:View xmlns:core="sap.ui.core" 
+xmlns:mvc="sap.ui.core.mvc"  
+xmlns="sap.m" 
+xmlns:f="sap.ui.layout.form"
+xmlns:l="sap.ui.layout" 
+xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" 
+xmlns:html="http://www.w3.org/1999/xhtml" 
+controllerName="com.leavemodel.odata.controller.EditLeaveDetail">
+	<App>
+		<pages>
+			<Page title="Show Request Details">
+				<content>
+					<VBox class="sapUiSmallMargin">
+						<f:SimpleForm id="leaveTypeEditForm"
+							editable="true"
+							layout="ResponsiveGridLayout"
+							title="Address"
+							labelSpanXL="3"
+							labelSpanL="3"
+							labelSpanM="3"
+							labelSpanS="12"
+							adjustLabelSpan="false"
+							emptySpanXL="4"
+							emptySpanL="4"
+							emptySpanM="4"
+							emptySpanS="0"
+							columnsXL="1"
+							columnsL="1"
+							columnsM="1"
+							singleContainerFullSize="false" >
+							<f:content>
+								<Label text="Leave Type" />
+									<ComboBox width="100%" id="leaveListCombo" showSecondaryValues="true" items="{             path: '/TLeaveTypes'}">
+										<core:ListItem key="{Id}" text="{LeaveDesc}" additionalText=" - {LeaveType}"/>
+									</ComboBox>
+								<Label text="Start Date" />
+								<DatePicker value="{StartDate}" id="startDateInput"/>
+								<Label text="End Date" />
+								<DatePicker value ="{EndDate}"  id= "endDateInput"/>
+								<Label text="Approver Name" />
+								<Input value ="{ApproverName}"  editable = "false" id ="approverInput"/>
+								<Label text="Note" />
+								<TextArea width="100%" value="{Note}" id = "noteInput"/>								
+							</f:content>
+						</f:SimpleForm>
+					</VBox>
+				</content>
+				<footer>
+					<OverflowToolbar id="otbFooter">
+						<ToolbarSpacer/>
+						<Button text="{i18n&gt;layoutSaveButton}" type="Emphasized" press="saveRequest" action:leaveid = "{singleLeaveM&gt;/id}">
+							<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+						</Button>
+						<Button text="{i18n&gt;layoutCancelButton}" type="Default" press="cancelRequest" >
+							<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+						</Button>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

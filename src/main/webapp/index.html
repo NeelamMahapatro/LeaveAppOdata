@@ -5,14 +5,17 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta charset="UTF-8">
 
-		<title>OData Boilerplate Application</title>
+		<title>Leave Request Application</title>
 
 		<script id="sap-ui-bootstrap"
 			src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+			data-sap-ui-theme="sap_fiori_3"
 			data-sap-ui-libs="sap.m"
-			data-sap-ui-theme="sap_bluecrystal"
 			data-sap-ui-compatVersion="edge"
-			data-sap-ui-resourceroots='{"com.penninkhof.odata": ""}'>
+			data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
+			data-sap-ui-async="true"
+			data-sap-ui-frameOptions="trusted"
+			data-sap-ui-resourceroots='{"com.leavemodel.odata": ""}'>
 		</script>
 
 		<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -22,7 +25,7 @@
 				new sap.m.Shell({
 					app: new sap.ui.core.ComponentContainer({
 						height : "100%",
-						name : "com.leave.model"
+						name : "com.leavemodel.odata"
 					})
 				}).placeAt("content");
 			});

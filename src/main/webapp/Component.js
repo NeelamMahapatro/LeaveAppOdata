@@ -1,11 +1,11 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
-	"com/leave/model/model/models"
+	"com/leavemodel/odata/model/models"
 ], function(UIComponent, Device, models) {
 	"use strict";
 
-	return UIComponent.extend("com.leave.model.Component", {
+	return UIComponent.extend("com.leavemodel.odata.Component", {
 
 		metadata: {
 			manifest: "json"
