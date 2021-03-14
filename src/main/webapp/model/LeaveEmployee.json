@@ -1,0 +1,30 @@
+{
+	"LeaveEmployeeCollection":
+	[
+		{
+		"id": 1,
+		"leaveId": "4", 
+		"leaveType":  "Floating Leave",
+		"startDate": "2021-01-01",
+		"endDate": "2021-01-02",
+		"createdDate": "2020-12-31",
+		"status": 0,
+		"approver": "Nirmala Shetter",
+		"quotaUsed": 2,
+		"note": "I am taking this leave due to fever"
+		},
+		{
+		"id":2,
+		"leaveId": "3", 
+		"leaveType":  "Hospitalization Leave",
+		"startDate": "2021-01-01",
+		"endDate": "2021-01-01",
+		"createdDate": "02-01-2020",
+		"status": 1,
+		"approver": "Nirmala Shetter",
+		"quotaUsed": 1,
+		"note": "I am taking this leave due to hospitalization"
+		}
+		
+	]
+}

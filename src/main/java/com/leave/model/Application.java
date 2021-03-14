@@ -13,7 +13,6 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
-import com.leave.model.entities.Member;
 import com.leave.model.entities.TEmpLeave;
 import com.leave.model.entities.TEmployee;
 import com.leave.model.entities.TLeaveType;
@@ -24,8 +23,6 @@ import com.leave.model.repository.*;
 public class Application extends SpringBootServletInitializer {
 
 	private static final Logger log = LoggerFactory.getLogger(Application.class);
-
-	public MemberRepository memberRepository;
 	public EmployeeRepository empRepository;
 	
     @Override
@@ -39,22 +36,13 @@ public class Application extends SpringBootServletInitializer {
 	
 
 	@Bean
-	public CommandLineRunner demo(final MemberRepository repository, final EmployeeRepository empRepository, final LeaveTypeRepository leaveTypeRepository, final EmpLeaveRepository empLeaveRepository) {
+	public CommandLineRunner demo( final EmployeeRepository empRepository, final LeaveTypeRepository leaveTypeRepository, final EmpLeaveRepository empLeaveRepository) {
 	    return new CommandLineRunner() {
 			public void run(String... args) throws Exception {
 				final TLeaveType tempLeaveType= new TLeaveType(1, "Illness Leave", "Leave for your health");
 				final TEmployee tempEmp = new TEmployee(1, "neelam.mahapatro@sap.com", "neelam", "2020-06-13", "mahapatro", "8280030272", null);
-				final TEmpLeave tempEmpLeave= new TEmpLeave(1, "2021-01-05", "Taking this leave due to Severe Headache", 2, "2021-01-04", tempEmp, tempLeaveType);
+				final TEmpLeave tempEmpLeave= new TEmpLeave(1, "1/5/21", "Taking this leave due to Severe Headache", 2, "4/1/21", 0, "Nirmala Shetter", tempEmp, tempLeaveType);
 				
-				if (repository.count() == 0) {
-					log.info("Member Table is still empty. Adding some sample records to Members");
-					repository.save(new Member(1, "Jack", "Bauer"));
-					repository.save(new Member(2, "Chloe", "O'Brian"));
-					repository.save(new Member(3, "Kim", "Bauer"));
-					repository.save(new Member(4, "David", "Palmer"));
-					repository.save(new Member(5, "Michelle", "Dessler"));					
-					repository.save(new Member(5, "Michelle", "Dessler"));
-				}
 				if(leaveTypeRepository.count()==0)
 				{
 					log.info("Leave Type Table is still empty. Adding some sample records to");

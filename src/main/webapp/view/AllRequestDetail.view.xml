@@ -1,0 +1,72 @@
+<mvc:View xmlns:core="sap.ui.core" 
+xmlns:mvc="sap.ui.core.mvc" 
+xmlns:tnt="sap.tnt" 
+xmlns="sap.m"
+xmlns:smartTable="sap.ui.comp.smarttable"
+xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" 
+controllerName="com.leavemodel.odata.controller.AllRequestDetail" 
+xmlns:html="http://www.w3.org/1999/xhtml" displayBlock="true">
+	<App>
+		<pages>
+			<Page title="My Leave Request">
+				<content>
+					<Table id="idLeaveTable" inset="false" 
+					growing="true"									
+					items="{ path: '/TEmployees(1)/TEmpLeaveDetails',
+							parameters: {'expand': 'TLeaveTypeDetails'}}"							
+					>
+							<headerToolbar>
+								<Toolbar>
+										<Title text="Request Overview" level="H2"/>
+										<ToolbarSpacer/>
+								</Toolbar>
+							</headerToolbar>
+							<columns>
+								<Column width="18rem">
+									<Text text="Leave Type"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Status"/>
+								</Column>
+								<Column minScreenWidth="Desktop" demandPopin="true">
+									<Text text="Validity"/>
+								</Column>
+								<Column minScreenWidth="Desktop" demandPopin="true">
+									<Text text="Approver"/>
+								</Column>
+								<Column>
+									<Text text="Quota Used"/>
+								</Column>
+								<Column width="3rem">
+								</Column>
+								<Column width="5rem">
+								</Column>
+								<Column width="3rem">
+								</Column>
+							</columns>
+							<ColumnListItem>
+									<cells>
+										<ObjectIdentifier title="{TLeaveTypeDetails/LeaveDesc}"/>
+										<tnt:InfoLabel text="{= ${Status} &gt; 0 ? 'Approved': 'Sent'}" displayOnly="true" colorScheme="{             parts: [              {path: 'Status'}             ],             formatter: 'sap.tnt.sample.InfoLabelInTable.Formatter.availableState'            }"/>
+										<Text text="{StartDate} - {EndDate}"/>
+										<Text text="{ApproverName}"/>
+										<Text text="{QuotaUsed}"/>
+										<Button icon="sap-icon://edit" press="onPressEdit" action:leaveid="{Id}"/>
+										<Button icon="sap-icon://delete" press="onPressDelete" action:leaveid="{Id}"/>
+										<Button icon="sap-icon://navigation-right-arrow" press="navigation" action:leaveid="{Id}"/>
+									</cells>
+							</ColumnListItem>
+						</Table>
+				</content>
+				<footer>
+						<OverflowToolbar id="otbFooter">
+							<ToolbarSpacer/>
+							<Button text="{i18n&gt;layoutCreateButton}" type="Emphasized" press="action" action:wiring="\{'press':\{'navigation':\{'routeName':'CreateLeaveRequest'\}\}\}">
+								<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+							</Button>
+						</OverflowToolbar>
+					</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

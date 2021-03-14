@@ -1,13 +1,15 @@
 ---
 applications:
 
-- name: odataSample
+- name: LeaveApplication
   memory: 1024M
   timeout: 300
   random-route: true
   path: target/odata-0.1.0.war
   buildpacks:
     - sap_java_buildpack
+  services:
+    - testHanaSchema
 #  env:
 #    TARGET_RUNTIME: tomee7
 #    SET_LOGGING_LEVEL: '{ROOT: INFO, com.sap.cloud.sdk: INFO}'

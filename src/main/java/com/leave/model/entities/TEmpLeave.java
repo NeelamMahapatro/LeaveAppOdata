@@ -16,6 +16,7 @@ public class TEmpLeave implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
 	@Column(name="end_date")
@@ -26,8 +27,14 @@ public class TEmpLeave implements Serializable {
 	@Column(name="quota_used")
 	private int quotaUsed;
 
+	@Column(name="status")
+	private int status;
+
 	@Column(name="start_date")
 	private String startDate;
+
+	@Column(name="approver_name")
+	private String approverName;
 
 	//bi-directional many-to-one association to TEmployee
 	@ManyToOne
@@ -49,7 +56,14 @@ public class TEmpLeave implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	public void setApproverName(String approver)
+	{
+		this.approverName = approver;
+	}
+	public String getApproverName()
+	{
+		return this.approverName;
+	}
 	public String getEndDate() {
 		return this.endDate;
 	}
@@ -68,6 +82,14 @@ public class TEmpLeave implements Serializable {
 
 	public int getQuotaUsed() {
 		return this.quotaUsed;
+	}
+
+	public int getStatus() {
+		return this.status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
 	public void setQuotaUsed(int quotaUsed) {
@@ -98,10 +120,12 @@ public class TEmpLeave implements Serializable {
 		this.TLeaveType = TLeaveType;
 	}
 
-	public TEmpLeave(int id, String endDate, String note, int quotaUsed, String startDate,
+	public TEmpLeave(int id, String endDate, String note, int quotaUsed, String startDate, int status, String approverName,
 			com.leave.model.entities.TEmployee tEmployee, com.leave.model.entities.TLeaveType tLeaveType) {
 		super();
 		this.id = id;
+		this.status = status;
+		this.approverName = approverName;
 		this.endDate = endDate;
 		this.note = note;
 		this.quotaUsed = quotaUsed;

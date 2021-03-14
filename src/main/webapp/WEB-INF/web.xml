@@ -8,7 +8,7 @@
     <resource-ref>
         <res-ref-name>jdbc/DefaultDB</res-ref-name>
         <res-type>javax.sql.DataSource</res-type>
-    </resource-ref>
+    </resource-ref> 
     
     <!-- Users need to login. Remove this if no authentication is necessary
     	 If additional (role based) authorization is necessary, check: 
