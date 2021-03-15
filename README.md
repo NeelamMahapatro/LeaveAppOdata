@@ -7,7 +7,7 @@ Users can visualize their earlier Request, create Leave Request, update their Le
 
 ## Backend  - uses Java and Odata service.
 
-## Database - MySQL in local system, Hana Cloud DB on SAP Cloud Platform
+## Database - MySQL on local system, Hana Cloud DB on SAP Cloud Platform
 
 To run on local platform or cloud platform, we have to change 2 files
 1. pom.xml - (Activation of Required profile)
