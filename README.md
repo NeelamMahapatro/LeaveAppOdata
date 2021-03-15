@@ -21,6 +21,6 @@ To run on local platform or cloud platform, we have to change 2 files
 5. Tomcat Server 8.0 or above
 6. POSTMAN for testing the Odata service
 
-To run the Application locally, run the foloowing command in your command prompt -
+To run the Application locally, run the following command in your command prompt -
 mvn spring-boot:run -P jar
 
